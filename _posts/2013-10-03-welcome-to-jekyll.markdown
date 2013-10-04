@@ -1,24 +1,62 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2013-10-03 16:31:18
-categories: jekyll update
+title:  "Create a WebLogic DataSource with WLST"
+date:   2013-10-04
+categories: weblogic datasource wlst
 ---
 
-You'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes!
-To add new posts, simply add a file in the `_posts` directory that follows the convention: YYYY-MM-DD-name-of-post.ext.
+Create WebLogic DataSource with WLST
+===============
 
-Jekyll also offers powerful support for code snippets:
+1. Set your MW_HOME environment variable
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+``
+export MW_HOME=/Developer/oracle/wls12120 
+``
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
+2. From your "wlst-datasource" directory:
 
-[jekyll-gh]: https://github.com/mojombo/jekyll
-[jekyll]:    http://jekyllrb.com
+``
+$ . $MW_HOME/wlserver/server/bin/setWLSEnv.sh
+``
+
+Notice the "." before invoking setWLSEnv.sh.
+
+3. Change the ds.properties file accordingly and can call
+
+``java weblogic.WLST create-ds.py``
+
+You should see an output similar to:
+
+```
+Initializing WebLogic Scripting Tool (WLST) ...
+
+Welcome to WebLogic Server Administration Scripting Shell
+
+Type help() for help on available commands
+
+@@@ Starting the script ...
+Connecting to t3://localhost:7001 with userid weblogic ...
+Successfully connected to Admin Server "AdminServer" that belongs to domain "base_domain".
+
+Warning: An insecure protocol was used to connect to the
+server. To ensure on-the-wire security, the SSL port or
+Admin port should be used instead.
+
+Location changed to edit tree. This is a writable tree with
+DomainMBean as the root. To make changes you will need to start
+an edit session via startEdit().
+
+For more help, use help('edit')
+
+Starting an edit session ...
+Started edit session, please be sure to save and activate your
+changes once you are done.
+Resource Name: SampleDataSource
+MBean type JDBCSystemResource with name SampleDataSource has been created successfully.
+JDBC file name: jdbc/SampleDataSource-4141-jdbc.xml
+```
+
+Check out the full project at [Github][wlst-datasource].
+
+[wlst-datasource]: https://github.com/gmaggess/wlst-datasource
