@@ -5,9 +5,6 @@ date:   2013-10-05
 categories: gradle weblogic
 ---
 
-Gradle Project Template
-=======================
-
 It consists of 3 projects:
 
 ## ear
