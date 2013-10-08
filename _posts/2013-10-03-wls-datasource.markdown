@@ -4,13 +4,13 @@ title:  "Create a WebLogic DataSource with WLST"
 date:   2013-10-04
 categories: weblogic datasource wlst
 ---
-1. Set your MW_HOME environment variable
+I. Set your MW_HOME environment variable
 
 ``
 export MW_HOME=/Developer/oracle/wls12120 
 ``
 
-2. From your "wlst-datasource" directory:
+II. From your "wlst-datasource" directory:
 
 ``
 $ . $MW_HOME/wlserver/server/bin/setWLSEnv.sh
@@ -18,7 +18,7 @@ $ . $MW_HOME/wlserver/server/bin/setWLSEnv.sh
 
 Notice the "." before invoking setWLSEnv.sh.
 
-3. Change the ds.properties file accordingly and can call
+III. Change the ds.properties file accordingly and can call
 
 ``java weblogic.WLST create-ds.py``
 
