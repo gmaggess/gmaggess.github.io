@@ -4,10 +4,6 @@ title:  "Create a WebLogic DataSource with WLST"
 date:   2013-10-04
 categories: weblogic datasource wlst
 ---
-
-Create WebLogic DataSource with WLST
-===============
-
 1. Set your MW_HOME environment variable
 
 ``
