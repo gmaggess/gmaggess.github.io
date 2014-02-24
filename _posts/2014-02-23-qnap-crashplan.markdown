@@ -15,21 +15,15 @@ The Java installation was not quite as stated on the article. I followed the ins
 
 The other missing piece is how to configure Crashplan on your desktop to remotely access and configure the Crashplan client running in your NAS. Notice that I said 'client', because the idea is to backup your files to NAS and your NAS will push it to Crashplan. Find the ui.properties file on your desktop. I use a Mac, so in my case it's under _/Applications/CrashPlan.app/Contents/Resources/Java/conf/ui.properties_. Now edit the following line:
 
-```shell
-#Fri Dec 09 09:50:22 CST 2005
+```
 serviceHost=<NAS IP>
-#servicePort=4200
-#pollerPeriod=1000  # 1 second
-#connectRetryDelay=10000  # 10 seconds
-#connectRetryAttempts=3
-#showWelcome=true
-
-#font.small=
-#font.default=
-#font.title=
-#font.message.header=
-#font.message.body=
-#font.tab=
 ```
 
-After that, reload Crashplan service on your desktop and voilà!
+After that, reload Crashplan service on your Mac:
+
+```
+sudo launchctl unload /Library/LaunchDaemons/com.crashplan.engine.plist
+sudo launchctl load /Library/LaunchDaemons/com.crashplan.engine.plist
+```
+
+...and voilà!
